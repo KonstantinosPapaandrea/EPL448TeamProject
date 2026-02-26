@@ -1,0 +1,83 @@
+Future columns:
+out_prncp: the remaining outstanding principal on the loan right now (how much principal is still unpaid)
+out_prncp_inv: the remaining outstanding principal attributed to investors’ portion of the loan (same idea as out_prncp, but for the investor-funded share)
+total_pymnt: the total amount of money received from the borrower so far, combining principal + interest + fees (i.e., “all payments to date”)
+total_pymnt_inv: total payments credited to investors to date (the investor-side share of total_pymnt)
+total_rec_prncp: the total principal that has been repaid/received to date
+total_rec_int: the total interest that has been received to date
+total_rec_late_fee: total late fees that have been received to date
+recoveries: money recovered after the loan has been charged off, typically
+collection_recovery_fee: fees charged for the recovery/collection process (the cost associated with collecting recoveries)
+last_pymnt_amnt: the amount of the most recent payment made by the borrower.
+last_pymnt_d: the date the most recent payment was received on the loan (a “last payment date” timestamp)
+next_pymnt_d: the next scheduled payment due date (what the system expects as the upcoming payment date, based on the current repayment schedule/status). 
+last_credit_pull_d: the most recent date LendingClub pulled the borrower’s credit report
+last_fico_range_low: the lower bound of the borrower’s latest FICO score band at the time of the most recent update/pull
+last_fico_range_high: the upper bound of the borrower’s latest FICO score band at the time of the most recent update/pull
+Hardship is something that happens later when the borrower can't meet the original schedule.
+hardship_flag, orig_projected_additional_accrued_interest, hardship_type, hardship_reason, hardship_status, deferral_term, hardship_amount, hardship_start_date, hardship_end_date, payment_plan_start_date, hardship_length, hardship_dpd, hardship_loan_status, hardship_payoff_balance_amount, hardship_last_payment_amount
+Dept_settlement:settlement is late-stage resolution process so these exist after serious charge-off paths
+ebt_settlement_flag, debt_settlement_flag_date, settlement_status, settlement_date, settlement_amount, settlement_percentage, settlement_term
+Identifiers:(No point in using them might lead to memorization effects)
+id, member_id, url
+Borderline:(Exactly when the loan happens)
+funded_amnt,funded_amnt_inv
+Safe features:
+
+loan_amnt: the loan amount the borrower requested (principal at origination).
+
+term: the repayment length of the loan (typically 36 or 60 months).
+
+int_rate: the interest rate charged on the loan.
+
+installment: the scheduled monthly payment amount (based on amount, rate, term).
+
+grade: LendingClub’s overall credit grade assigned to the loan (risk tier).
+
+sub_grade: a more granular grade within grade (finer risk tier).
+
+home_ownership: borrower’s housing status (e.g., RENT/OWN/MORTGAGE).
+
+verification_status: whether the borrower’s income was verified (e.g., Verified / Source Verified / Not Verified).
+
+issue_d: the month/year the loan was issued/funded (origination date).
+
+purpose: the borrower-selected reason for the loan (debt_consolidation, credit_card, etc.).
+
+addr_state: borrower’s state of residence.
+
+fico_range_low: lower bound of the borrower’s FICO score band at origination.
+
+fico_range_high: upper bound of the borrower’s FICO score band at origination.
+
+revol_bal: borrower’s total revolving credit balance (e.g., credit cards) on the credit report snapshot.
+
+revol_util: revolving utilization rate = revolving balance / revolving credit limit (how “maxed out” revolving credit is).
+
+dti: debt-to-income ratio (borrower’s monthly debt payments relative to income) at the time of application/origination snapshot.
+
+annual_inc: borrower’s self-reported annual income.
+
+emp_length: borrower’s length of employment (tenure).
+
+emp_title: borrower’s job title (free text).
+
+earliest_cr_line: date of the borrower’s oldest credit line (how long they’ve had credit history).
+
+Credit-history counters (from the credit report snapshot; they measure past credit behavior, not future loan performance):
+
+delinq_2yrs: number of 30+ day delinquencies in the past 2 years.
+
+inq_last_6mths: number of credit inquiries in the last 6 months (often a proxy for recent credit-seeking).
+
+open_acc: number of open credit accounts/lines.
+
+total_acc: total number of credit accounts in the borrower’s file (open + closed).
+
+pub_rec: number of derogatory public records (e.g., certain legal/financial public events).
+
+tax_liens: number of tax liens.
+
+collections_12_mths_ex_med: number of collections in last 12 months, excluding medical collections.
+
+chargeoff_within_12_mths: number of charge-offs in the last 12 months (accounts written off as losses).
